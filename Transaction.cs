@@ -20,5 +20,14 @@ namespace SupportBank
         public string TransactionNarrative { get; set; }
         [Name("Amount")]
         public double TransactionAmount { get; set; }
+    
+        public Transaction()
+        {
+            TransactionDate = "";
+            FromName = "";
+            ToName = "";
+            TransactionNarrative = "";
+            TransactionAmount = 0;
+        }
     }
 }

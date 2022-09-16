@@ -10,15 +10,15 @@ namespace SupportBank
 {
     public class CsvData
     {
-        public static HashSet< string > GetNameList(List<Transaction> transactions) 
+        public static HashSet<string> GetNameList(List<Transaction> transactions)
         {
-            HashSet< string > fromNameHSet = new HashSet< string >();
+            HashSet<string> fromNameHSet = new HashSet<string>();
             foreach (var item in transactions)
             {
                 fromNameHSet.Add(item.FromName);
             }
 
-            HashSet< string > toNameHSet = new HashSet< string >();
+            HashSet<string> toNameHSet = new HashSet<string>();
             foreach (var item in transactions)
             {
                 toNameHSet.Add(item.ToName);
