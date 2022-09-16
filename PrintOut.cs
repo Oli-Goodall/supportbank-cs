@@ -19,8 +19,16 @@ namespace SupportBank
         }
 
         public static void ShowMeMyBalance(Company company, string? name)
-        {
-            if (name != null)
+        {   
+            if(name == "all")
+            {
+                foreach (string item in company.ListOfPeopleNames)
+            {
+                Console.WriteLine($"{item} has a balance of £{company.Accounts[item].Balance}");
+            }
+            }
+
+            if (name != null && name != "all")
             {
                 if (company.Accounts[name].Balance > 0)
                 {
@@ -32,5 +40,16 @@ namespace SupportBank
                 }
             }
         }
+
+        public static void ShowAllStaffBalance(Company company)
+        {
+            foreach (string name in company.ListOfPeopleNames)
+            {
+                Console.WriteLine($"{name} has a balance of £{company.Accounts[name].Balance}");
+            }
+            
+        }
+
+
     }
 }
