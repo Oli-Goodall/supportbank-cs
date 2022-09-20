@@ -11,7 +11,7 @@ namespace SupportBank
         public List<Transaction> From;
         public List<Transaction> To;
 
-        public double Balance;
+        public double Balance{get; private set;}
         public string Name;
 
         public Person(string name, double balance)
@@ -20,6 +20,20 @@ namespace SupportBank
             this.Balance = balance;
             this.From = new List<Transaction>();
             this.To = new List<Transaction>();
+        }
+
+        public void UpdateBalance(Transaction transaction)
+        {
+            if(transaction.FromName == Name)
+            {
+                Balance -= transaction.TransactionAmount;
+                this.Balance = Math.Round(Balance, 2);
+            }
+            if(transaction.ToName == Name)
+            {
+                Balance += transaction.TransactionAmount;
+                this.Balance = Math.Round(Balance, 2);
+            }   
         }
 
     }

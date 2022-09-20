@@ -9,7 +9,7 @@ namespace SupportBank
         public Company(List<Transaction> transactions)
         {
             this.transactions = transactions;
-            peopleNames = CsvData.GetNameList(transactions);
+            peopleNames = NameListMaker.GetNameList(transactions);
             this.Accounts = GetAccounts();
         }
 
@@ -33,32 +33,18 @@ namespace SupportBank
                     if (transaction.FromName == personName)
                     {
                         accounts[personName].From.Add(transaction);
+                        accounts[personName].UpdateBalance(transaction);
                     }
                     if (transaction.ToName == personName)
                     {
                         accounts[personName].To.Add(transaction);
+                        accounts[personName].UpdateBalance(transaction);
                     }
                 }
             }
             return accounts;
         }
 
-        public void GetBalances()
-        {
-            foreach (string name in peopleNames)
-            {
-                double totalAmount = 0;
-                foreach (Transaction transaction in Accounts[name].From)
-                {
-                    totalAmount += transaction.TransactionAmount;
-                }
-                foreach (Transaction transaction in Accounts[name].To)
-                {
-                    totalAmount -= transaction.TransactionAmount;
-                }
-                Accounts[name].Balance = Math.Round(totalAmount, 2);
-            }
 
-        }
     }
 }

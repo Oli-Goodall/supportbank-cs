@@ -1,6 +1,6 @@
 namespace SupportBank
 {
-    public class CsvData
+    public static class NameListMaker
     {
         public static HashSet<string> GetNameList(List<Transaction> transactions)
         {
