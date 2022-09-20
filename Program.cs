@@ -1,19 +1,11 @@
-﻿using System;
-using CsvHelper;
-using System.IO;
-using System.Globalization;
-using System.Linq;
-using CsvHelper.Configuration;
-using CsvHelper.Configuration.Attributes;
-
-namespace SupportBank
+﻿namespace SupportBank
 {
     class Program
     {
         static void Main(string[] args)
         {
             // for csv
-            Company TechSwitch = new Company();
+            Company TechSwitch = CsvReader.ReadFromFile("Transactions2014.csv");
             TechSwitch.GetBalances(); //Put all staff in dic and calculate the staff balance
             PrintOut.AskUserWhatNeedToDo(TechSwitch);
 

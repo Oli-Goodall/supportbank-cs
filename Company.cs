@@ -1,34 +1,22 @@
-using System;
-using CsvHelper;
-using System.IO;
-using System.Globalization;
-using System.Linq;
-using CsvHelper.Configuration;
-using CsvHelper.Configuration.Attributes;
-
 namespace SupportBank
 {
     public class Company
     {
-        public List<Transaction> ListOfTransactions;
-        public HashSet<string> ListOfPeopleNames;
+        public List<Transaction> transactions;
+        public HashSet<string> peopleNames;
         public Dictionary<string, Person> Accounts;
 
-        public Company()
+        public Company(List<Transaction> transactions)
         {
-            using (var reader = new StreamReader("DodgyTransactions2015.csv"))
-            using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                ListOfTransactions = csvReader.GetRecords<Transaction>().ToList();
-            }
-            ListOfPeopleNames = CsvData.GetNameList(ListOfTransactions);
+            this.transactions = transactions;
+            peopleNames = CsvData.GetNameList(transactions);
             this.Accounts = GetAccounts();
         }
 
         private Dictionary<string, Person> GetAccounts()
         {
             List<Person> listOfPerson = new List<Person>();
-            foreach (var personName in this.ListOfPeopleNames)
+            foreach (var personName in this.peopleNames)
             {
                 listOfPerson.Add(new Person(personName, 0));
             }
@@ -38,9 +26,9 @@ namespace SupportBank
             {
                 accounts.Add(person.Name, person);
             }
-            foreach (var personName in ListOfPeopleNames)
+            foreach (var personName in peopleNames)
             {
-                foreach (var transaction in ListOfTransactions)
+                foreach (var transaction in transactions)
                 {
                     if (transaction.FromName == personName)
                     {
@@ -57,7 +45,7 @@ namespace SupportBank
 
         public void GetBalances()
         {
-            foreach (string name in ListOfPeopleNames)
+            foreach (string name in peopleNames)
             {
                 double totalAmount = 0;
                 foreach (Transaction transaction in Accounts[name].From)

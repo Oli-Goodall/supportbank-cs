@@ -22,7 +22,7 @@ namespace SupportBank
         {   
             if(name == "all")
             {
-                foreach (string item in company.ListOfPeopleNames)
+                foreach (string item in company.peopleNames)
             {
                 Console.WriteLine($"{item} has a balance of £{company.Accounts[item].Balance}");
             }
@@ -43,7 +43,7 @@ namespace SupportBank
 
         public static void ShowAllStaffBalance(Company company)
         {
-            foreach (string name in company.ListOfPeopleNames)
+            foreach (string name in company.peopleNames)
             {
                 Console.WriteLine($"{name} has a balance of £{company.Accounts[name].Balance}");
             }
@@ -69,7 +69,7 @@ namespace SupportBank
                 {
                     Console.WriteLine("Pleace select a account");
                     int counter = 1;
-                    foreach (var name in company.ListOfPeopleNames)
+                    foreach (var name in company.peopleNames)
                     {
                         Console.WriteLine($"{counter}. {name}");
                         counter++;
@@ -78,9 +78,9 @@ namespace SupportBank
                 }
                 else if (input == 3)
                 {
-                    Console.WriteLine($"====   We have total {company.ListOfPeopleNames.Count()} accounts  ====");
+                    Console.WriteLine($"====   We have total {company.peopleNames.Count()} accounts  ====");
                     int counter = 1;
-                    foreach (var name in company.ListOfPeopleNames)
+                    foreach (var name in company.peopleNames)
                     {
                         Console.WriteLine($"{counter}. {name}");
                         counter++;
