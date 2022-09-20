@@ -10,23 +10,21 @@ namespace SupportBank
 {
     public class Company
     {
-        public List<Person> Staff;
         public List<Transaction> ListOfTransactions;
         public HashSet<string> ListOfPeopleNames;
         public Dictionary<string, Person> Accounts;
+
         public Company()
         {
-            Staff = new List<Person>();
-            // var transactions = new List<Transaction>();
-            using (var reader = new StreamReader("Transactions2014.csv"))
+            using (var reader = new StreamReader("DodgyTransactions2015.csv"))
             using (var csvReader = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 ListOfTransactions = csvReader.GetRecords<Transaction>().ToList();
             }
             ListOfPeopleNames = CsvData.GetNameList(ListOfTransactions);
             this.Accounts = GetAccounts();
-
         }
+
         private Dictionary<string, Person> GetAccounts()
         {
             List<Person> listOfPerson = new List<Person>();
@@ -54,7 +52,6 @@ namespace SupportBank
                     }
                 }
             }
-
             return accounts;
         }
 
