@@ -1,0 +1,39 @@
+2022-09-20 13:51:32.3614 Error - SupportBank.CsvReader: CsvHelper.TypeConversion.TypeConverterException: The conversion cannot be performed.
+    Text: 'One Cheeseburger'
+    MemberType: System.Double
+    TypeConverter: 'CsvHelper.TypeConversion.DoubleConverter'
+IReader state:
+   ColumnCount: 0
+   CurrentIndex: 4
+   HeaderRecord:
+["Date","From","To","Narrative","Amount"]
+IParser state:
+   ByteCount: 0
+   CharCount: 1224
+   Row: 28
+   RawRow: 28
+   Count: 5
+   RawRecord:
+01/03/2015,Ben B,Sam N,Lunch,One Cheeseburger
+
+
+2022-09-20 13:51:36.4559 Debug - SupportBank.Program: Hello
+2022-09-20 13:52:59.3027 Error - SupportBank.CsvReader: CsvHelper.TypeConversion.TypeConverterException: The conversion cannot be performed.
+    Text: 'One Cheeseburger'
+    MemberType: System.Double
+    TypeConverter: 'CsvHelper.TypeConversion.DoubleConverter'
+IReader state:
+   ColumnCount: 0
+   CurrentIndex: 4
+   HeaderRecord:
+["Date","From","To","Narrative","Amount"]
+IParser state:
+   ByteCount: 0
+   CharCount: 1224
+   Row: 28
+   RawRow: 28
+   Count: 5
+   RawRecord:
+01/03/2015,Ben B,Sam N,Lunch,One Cheeseburger
+
+

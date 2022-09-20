@@ -18,7 +18,7 @@ namespace SupportBank
             config.LoggingRules.Add(new LoggingRule("*", LogLevel.Debug, target));
             LogManager.Configuration = config;
 
-            Company TechSwitch = CsvReader.ReadFromFile("Transactions2014.csv");
+            Company TechSwitch = CsvReader.ReadFromFile("DodgyTransactions2015.csv");
             PrintOut.AskUserWhatNeedToDo(TechSwitch);
 
             Logger.Debug("Hello");
